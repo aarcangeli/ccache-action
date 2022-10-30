@@ -59565,7 +59565,7 @@ async function installCcacheWindows() {
     `${external_process_namespaceObject.env.USERPROFILE}\\.cargo\\bin`, "ccache.exe");
 }
 async function installSccacheMac() {
-    const version = "v0.0.2";
+    const version = "v0.0.3";
     const artifactName = "x86_64-apple-darwin";
     const archiveName = `sccache-${version}-${artifactName}`;
     const url = `https://github.com/aarcangeli/sccache/releases/download/${version}/${archiveName}.tar.gz`;
