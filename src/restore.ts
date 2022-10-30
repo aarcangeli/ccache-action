@@ -77,7 +77,15 @@ async function installCcacheWindows() : Promise<void> {
 }
 
 async function installSccacheMac() : Promise<void> {
-  await downloadAndExtract("https://github.com/aarcangeli/sccache/suites/9033109831/artifacts/417089320.zip", `*/sccache`, "/usr/local/bin/sccache");
+  const version = "v0.0.1";
+  const artifactName = "x86_64-apple-darwin";
+  const archiveName = `sccache-${version}-${artifactName}`;
+  const url = `https://github.com/aarcangeli/sccache/releases/download/${version}/${archiveName}.tar.gz`;
+  const binDir = "/usr/local/bin";
+  const binName = "sccache";
+
+  const binPath = path.join(binDir, binName);
+  await downloadAndExtract(url, `*/${binName}`, binPath);
 }
 
 async function installSccacheLinux() : Promise<void> {

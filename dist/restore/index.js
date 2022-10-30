@@ -59565,7 +59565,14 @@ async function installCcacheWindows() {
     `${external_process_namespaceObject.env.USERPROFILE}\\.cargo\\bin`, "ccache.exe");
 }
 async function installSccacheMac() {
-    await downloadAndExtract("https://github.com/aarcangeli/sccache/suites/9033109831/artifacts/417089320.zip", `*/sccache`, "/usr/local/bin/sccache");
+    const version = "v0.0.1";
+    const artifactName = "x86_64-apple-darwin";
+    const archiveName = `sccache-${version}-${artifactName}`;
+    const url = `https://github.com/aarcangeli/sccache/releases/download/${version}/${archiveName}.tar.gz`;
+    const binDir = "/usr/local/bin";
+    const binName = "sccache";
+    const binPath = external_path_default().join(binDir, binName);
+    await downloadAndExtract(url, `*/${binName}`, binPath);
 }
 async function installSccacheLinux() {
     await installSccacheFromGitHub("v0.3.0", "x86_64-unknown-linux-musl", "594b4323aaee02d3b5e1e19c20eb63acb53fd8ecd3c0a3e43618a6e9e36af2fe", "/usr/local/bin/", "sccache");
