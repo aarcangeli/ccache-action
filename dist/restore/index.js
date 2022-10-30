@@ -59569,10 +59569,10 @@ async function installSccacheMac() {
     const artifactName = "x86_64-apple-darwin";
     const archiveName = `sccache-${version}-${artifactName}`;
     const url = `https://github.com/aarcangeli/sccache/releases/download/${version}/${archiveName}.tar.gz`;
-    const binDir = "/usr/local/bin";
-    const binName = "sccache";
-    const binPath = external_path_default().join(binDir, binName);
-    await downloadAndExtract(url, `*/${binName}`, binPath);
+    await execBash(`curl -L '${url}' -o ${archiveName}.tar.gz`);
+    await execBash(`tar xzf ${archiveName}.tar.gz`);
+    await execBash(`chmod +x ${archiveName}/sccache`);
+    await execBash(`cp ${archiveName}/sccache /usr/local/bin`);
 }
 async function installSccacheLinux() {
     await installSccacheFromGitHub("v0.3.0", "x86_64-unknown-linux-musl", "594b4323aaee02d3b5e1e19c20eb63acb53fd8ecd3c0a3e43618a6e9e36af2fe", "/usr/local/bin/", "sccache");

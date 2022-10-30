@@ -81,11 +81,11 @@ async function installSccacheMac() : Promise<void> {
   const artifactName = "x86_64-apple-darwin";
   const archiveName = `sccache-${version}-${artifactName}`;
   const url = `https://github.com/aarcangeli/sccache/releases/download/${version}/${archiveName}.tar.gz`;
-  const binDir = "/usr/local/bin";
-  const binName = "sccache";
 
-  const binPath = path.join(binDir, binName);
-  await downloadAndExtract(url, `*/${binName}`, binPath);
+  await execBash(`curl -L '${url}' -o ${archiveName}.tar.gz`);
+  await execBash(`tar xzf ${archiveName}.tar.gz`);
+  await execBash(`chmod +x ${archiveName}/sccache`);
+  await execBash(`cp ${archiveName}/sccache /usr/local/bin`);
 }
 
 async function installSccacheLinux() : Promise<void> {
