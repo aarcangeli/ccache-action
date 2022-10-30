@@ -77,7 +77,7 @@ async function installCcacheWindows() : Promise<void> {
 }
 
 async function installSccacheMac() : Promise<void> {
-  await execBash("brew install sccache");
+  await downloadAndExtract("https://github.com/aarcangeli/sccache/suites/9033109831/artifacts/417089320.zip", `*/sccache`, "/usr/local/bin/sccache");
 }
 
 async function installSccacheLinux() : Promise<void> {
