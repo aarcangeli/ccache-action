@@ -77,7 +77,7 @@ async function installCcacheWindows() : Promise<void> {
 }
 
 async function installSccacheMac() : Promise<void> {
-  const version = "v0.0.1";
+  const version = "v0.0.2";
   const artifactName = "x86_64-apple-darwin";
   const archiveName = `sccache-${version}-${artifactName}`;
   const url = `https://github.com/aarcangeli/sccache/releases/download/${version}/${archiveName}.tar.gz`;
